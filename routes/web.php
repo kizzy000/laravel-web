@@ -2,11 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Htpp\Controllers\homeController;
-
+use App\Http\Controllers\homeController;
 use App\Http\Controllers\MahasiswaController;
-
+use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\MatakuliahController;
+use App\Http\Controllers\loginController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,3 +41,10 @@ Route::get('/matakuliah', [MatakuliahController::class, 'index']);
 //hahahahahahhahahahah ajahhahahahahah
 
 Route::get('/home', [homeController::class, 'index']);
+
+Route::post('question/store', [QuestionController::class, 'store'])
+->name('question.store');
+
+
+Route::get('/auth', [loginController::class, 'index'])
+->name('login.index');
