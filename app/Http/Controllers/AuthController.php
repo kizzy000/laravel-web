@@ -40,8 +40,8 @@ class AuthController extends Controller
         $username = $request->input('username');
         $password = $request->input('password');
 
-        $user = 'Admin';
-        $pass = 'Admin123';
+        $user = 'Kizzy';
+        $pass = 'Kizz06';
 
         if ($username == $user && $password == $pass) {
             return redirect('/beranda')->with('success', 'Login berhasil, selamat datang!');
