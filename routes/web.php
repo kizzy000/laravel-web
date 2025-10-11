@@ -6,7 +6,7 @@ use App\Http\Controllers\homeController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\MatakuliahController;
-use App\Http\Controllers\loginController;
+use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -45,6 +45,8 @@ Route::get('/home', [homeController::class, 'index']);
 Route::post('question/store', [QuestionController::class, 'store'])
 ->name('question.store');
 
-
-Route::get('/auth', [loginController::class, 'index'])
-->name('login.index');
+Route::get('/auth', [AuthController::class, 'index']);
+Route::post('/auth/login', [AuthController::class, 'login']);
+Route::get('/beranda', function () {
+    return view('beranda');
+});
