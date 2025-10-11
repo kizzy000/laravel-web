@@ -7,6 +7,7 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PegawaiController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -50,3 +51,5 @@ Route::post('/auth/login', [AuthController::class, 'login']);
 Route::get('/beranda', function () {
     return view('beranda');
 });
+
+Route::get('/pegawai', [PegawaiController::class, 'index']);
