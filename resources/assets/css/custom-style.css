@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'myCustomFont1';
+    src: url('../fonts/myCustomFont1.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.font-custom{
+    font-family: 'myCustomFont1';
+}
+

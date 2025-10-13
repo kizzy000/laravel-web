@@ -8,6 +8,7 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\MatakuliahController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,13 +38,16 @@ Route::get('/about', function () {
 
 
 Route::get('/matakuliah/show/{kode}', [MatakuliahController::class, 'show']);
-Route::get('/matakuliah', [MatakuliahController::class, 'index']);
+
+Route::get('/matakuliah', [MatakuliahController::class, 'index'])
+->name('matakuliah');
 
 //hahahahahahhahahahah ajahhahahahahah
 
-Route::get('/home', [homeController::class, 'index']);
+Route::get('/home', [homeController::class, 'index'])
+->name('home');
 
-Route::post('question/store', [QuestionController::class, 'store'])
+Route::post('/question/store', [QuestionController::class, 'store'])
 ->name('question.store');
 
 Route::get('/auth', [AuthController::class, 'index']);
@@ -53,3 +57,6 @@ Route::get('/beranda', function () {
 });
 
 Route::get('/pegawai', [PegawaiController::class, 'index']);
+
+Route::get('dashboard', [DashboardController::class, 'index'])
+->name('dashboard');
