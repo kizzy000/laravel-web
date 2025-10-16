@@ -61,7 +61,7 @@
                         <h5 class="card-title">Desain Modern</h5>
                         <p class="font-custom">Dibangun dengan Bootstrap 5 untuk memastikan
                             yang bersih dan responsif di semua perangkat.</p>
-                        <img src="{{ asset('assets/images/logo1.jpg') }}" alt="Logo">
+                        <img src="{{ asset('assets/images/logo1.jpg') }}" alt="Logo" width="300px">
 
                     </div>
                 </div>
@@ -118,7 +118,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Mudah Dikustomisasi</h5>
                         <p class="card-text">Kode yang rapi dan terstruktur, memudahkan Anda untuk mengubah konten sesuai kebutuhan proyek.</p>
-                        <img src="{{ asset('assets/images/logo1.jpg') }}" alt="logo">
+                        <img src="{{ asset('assets/images/logo1.jpg') }}" alt="logo" width="300px">
                     </div>
                 </div>
             </div>
