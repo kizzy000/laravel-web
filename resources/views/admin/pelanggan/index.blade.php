@@ -80,7 +80,7 @@
                                                         </path>
                                                     </svg>
                                                     Hapus
-                                                </button>
+                                                </button> 
                                             </form>
                                         </td>
                                     </tr>

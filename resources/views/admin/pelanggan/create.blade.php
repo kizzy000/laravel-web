@@ -26,6 +26,16 @@
             </div>
         </div>
 
+                @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div class="row">
             <div class="col-12 mb-4">
                 <div class="card border-0 shadow components-section">
@@ -39,13 +49,13 @@
                                     {{--  Pastikan name sesuai dengan kolom di tabel pelanggan  --}}
                                     <div class="mb-3">
                                         <label for="first_name" class="form-label">First name</label>
-                                        <input type="text" id="first_name" name="first_name" class="form-control" required>
+                                        <input type="text" id="first_name" name="first_name" class="form-control" value="{{ old('first_name') }}" required>
                                     </div>
 
                                     <!-- Last Name -->
                                     <div class="mb-3">
                                         <label for="last_name" class="form-label">Last name</label>
-                                        <input type="text" id="last_name" name="last_name" class="form-control" required>
+                                        <input type="text" id="last_name" name="last_name" class="form-control" value="{{ old('last_name') }}" required>
                                     </div>
                                 </div>
 
@@ -53,17 +63,17 @@
                                     <!-- Birthday -->
                                     <div class="mb-3">
                                         <label for="birthday" class="form-label">Birthday</label>
-                                        <input type="date" id="birthday" name="birthday" class="form-control">
+                                        <input type="date" id="birthday" name="birthday" class="form-control" value="{{ old('birthday') }}">
                                     </div>
 
                                     <!-- Gender -->
                                     <div class="mb-3">
                                         <label for="gender" class="form-label">Gender</label>
-                                        <select id="gender" name="gender" class="form-select">
+                                        <select id="gender" name="gender" class="form-select" value="{{ old('gender') }}">
                                             <option value="">-- Pilih --</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
-                                            <option value="Other">Other</option>
+                                            <option value="{{ old('gender') }}">Male</option>
+                                            <option value="{{ old('gender') }}">Female</option>
+                                            <option value="Other">Other</option>        
                                         </select>
                                     </div>
                                 </div>
@@ -72,13 +82,13 @@
                                     <!-- Email -->
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="text" id="email" name="email" class="form-control" required>
+                                        <input type="text" id="email" name="email" class="form-control" value="{{ old('email') }}" required>
                                     </div>
 
                                     <!-- Phone -->
                                     <div class="mb-3">
                                         <label for="phone" class="form-label">Phone</label>
-                                        <input type="text" id="phone" name="phone" class="form-control">
+                                        <input type="text" id="phone" name="phone" class="form-control" value="{{ old('phone') }}">
                                     </div>
 
                                     <!-- Buttons -->
