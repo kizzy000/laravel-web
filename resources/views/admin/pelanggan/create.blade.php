@@ -1,5 +1,5 @@
-@extends('admin.template')
-@section('title','Tambah Pelanggan')
+@extends('admin.layouts.app')
+@section('title, Tambah Pelanggan')
 @section('content')
         <div class="py-4">
             <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
@@ -71,9 +71,9 @@
                                         <label for="gender" class="form-label">Gender</label>
                                         <select id="gender" name="gender" class="form-select" value="{{ old('gender') }}">
                                             <option value="">-- Pilih --</option>
-                                            <option value="{{ old('gender') }}">Male</option>
-                                            <option value="{{ old('gender') }}">Female</option>
-                                            <option value="Other">Other</option>        
+                                            <option value="Male {{ old('gender') }}">Male</option>
+                                            <option value="Female {{ old('gender') }}">Female</option>
+                                            <option value="Other {{ old('gender') }}" >Other</option>
                                         </select>
                                     </div>
                                 </div>

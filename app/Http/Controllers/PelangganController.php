@@ -57,7 +57,6 @@ class PelangganController extends Controller
             'birthday.required' => 'Tanggal lahir wajib diisi.',
             'birthday.date' => 'Tanggal lahir harus berupa format tanggal yang valid.',
             'gender.required' => 'Jenis kelamin wajib diisi.',
-            'gender.in' => 'Jenis kelamin hanya boleh Male atau Female.',
             'email.required' => 'Email wajib diisi.',
             'email.email' => 'Format email tidak valid.',
             'phone.required' => 'Nomor telepon wajib diisi.',
