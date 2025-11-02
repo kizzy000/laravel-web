@@ -21,7 +21,6 @@
     <meta name="theme-color" content="#ffffff">
 
     <!-- CSS -->
-
     @include('admin.layouts.css')
 
 </head>
@@ -30,7 +29,6 @@
 
         {{-- sidebar --}}
     @include('admin.layouts.sidebar')
-
 
     <main class="content">
 
@@ -47,6 +45,7 @@
 
     <!-- JS -->
     @include('admin.layouts.js')
+    
 </body>
 
 </html>

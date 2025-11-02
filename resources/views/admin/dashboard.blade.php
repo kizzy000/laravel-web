@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title, List Pelanggan')
+@section('title, Dashboard')
 @section('content')
 
     <div class="py-4">
@@ -13,7 +13,7 @@
           </svg>
           New Task
         </button>
-        <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
+        {{-- <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
           <a class="dropdown-item d-flex align-items-center" href="#">
             <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg">
@@ -61,7 +61,7 @@
             </svg>
             Upgrade to Pro
           </a>
-        </div>
+        </div> --}}
       </div>
     </div>
 

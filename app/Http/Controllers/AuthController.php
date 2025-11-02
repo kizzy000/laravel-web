@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -11,7 +14,7 @@ class AuthController extends Controller
      */
     public function index()
     {
-        return view('login-form');
+        return view('admin.login');
     }
 
     /**
@@ -28,26 +31,29 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'username' => 'required',
-            'password' => 'required|min:3|regex:/[A-Z]/',
-        ], [
-            'username.required' => 'Username wajib diisi.',
-            'password.required' => 'Password wajib diisi.',
-            'password.min' => 'Password minimal 3 karakter.',
-            'password.regex' => 'Password harus mengandung huruf kapital.',
+            'email' => 'required|email',
+            'password' => 'required|min:8'
         ]);
 
-        $username = $request->input('username');
-        $password = $request->input('password');
+        $user = User::where('email', $request->email)->first();
 
-        $user = 'Kizzy';
-        $pass = 'Kizz06';
-
-        if ($username == $user && $password == $pass) {
-            return redirect('/beranda')->with('success', 'Login berhasil, selamat datang!');
-        } else {
-            return redirect('/auth')->with('error', 'Username atau password salah!');
+        if (!$user) {
+            return redirect()->back()->withErrors([
+                    'email' => 'Username tidak ditemukan.',
+                ]);
         }
+
+        // Cek password dengan Hash::check
+        if (!Hash::check($request->password, $user->password)) {
+            return redirect()->back()->withErrors([
+                    'password' => 'Password yang dimasukkan salah.',
+                ]);
+        }
+
+        // Login user
+        Auth::login($user);
+
+        return redirect()->route('dashboard')->with('success', 'Login berhasil!');
     }
 
     /**
@@ -77,8 +83,9 @@ class AuthController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function logout()
     {
-        //
+        User::logout();
+        return redirect()->route('login')->with('info', 'Anda telah logout.');
     }
 }

@@ -50,8 +50,8 @@ Route::get('/home', [homeController::class, 'index'])
 Route::post('/question/store', [QuestionController::class, 'store'])
 ->name('question.store');
 
-Route::get('/auth', [AuthController::class, 'index']);
-Route::post('/auth/login', [AuthController::class, 'login']);
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::post('/auth/login', [AuthController::class, 'login'])->name('login.post');
 Route::get('/beranda', function () {
     return view('beranda');
 });

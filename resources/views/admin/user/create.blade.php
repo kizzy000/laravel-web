@@ -34,7 +34,7 @@
                     @endforeach
                 </ul>
             </div>
-        @endif
+                @endif
 
         <div class="row">
             <div class="col-12 mb-4">
@@ -47,7 +47,7 @@
                                 <div class="col-lg-4 col-sm-6">
                                     <!-- Name -->
                                     {{--  Pastikan name sesuai dengan kolom di tabel pelanggan  --}}
-                                    <div class="mb-3">
+                                   <div class="mb-3">
                                         <label for="first_name" class="form-label">Name</label>
                                         <input type="text" id="name" name="name" class="form-control" value="{{ old('name') }}" required>
                                     </div>
@@ -55,7 +55,7 @@
                                     <!-- Email -->
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="text" id="email" name="email" class="form-control" value="{{ old('email') }}" required>
+                                        <input type="email" id="email" name="email" class="form-control" value="{{ old('email') }}" required>
                                     </div>
                                 </div>
 
