@@ -43,16 +43,13 @@ class AuthController extends Controller
                 ]);
         }
 
-        // Cek password dengan Hash::check
         if (!Hash::check($request->password, $user->password)) {
             return redirect()->back()->withErrors([
                     'password' => 'Password yang dimasukkan salah.',
                 ]);
         }
-
-        // Login user
+        
         Auth::login($user);
-
         return redirect()->route('dashboard')->with('success', 'Login berhasil!');
     }
 
