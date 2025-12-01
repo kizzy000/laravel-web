@@ -14,7 +14,8 @@ class AuthController extends Controller
      */
     public function index()
     {
-        return view('admin.login');
+        // return view('admin.login');
+        return view('auth.login');
     }
 
     /**
@@ -30,27 +31,43 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        $request->validate([
+        // $request->validate([
+        //     'email' => 'required|email',
+        //     'password' => 'required|min:8'
+        // ]);
+
+        // $user = User::where('email', $request->email)->first();
+
+        // if (!$user) {
+        //     return redirect()->back()->withErrors([
+        //             'email' => 'Username tidak ditemukan.',
+        //         ]);
+        // }
+
+        // if (!Hash::check($request->password, $user->password)) {
+        //     return redirect()->back()->withErrors([
+        //             'password' => 'Password yang dimasukkan salah.',
+        //         ]);
+        // }
+
+        // Auth::login($user);
+        // return redirect()->route('dashboard')->with('success', 'Login berhasil!');
+
+        $input = $request->validate([
             'email' => 'required|email',
-            'password' => 'required|min:8'
+            'password' => 'required',
         ]);
-
-        $user = User::where('email', $request->email)->first();
-
-        if (!$user) {
-            return redirect()->back()->withErrors([
-                    'email' => 'Username tidak ditemukan.',
-                ]);
+        if (Auth::attempt($input)) {
+            $request->session()->regenerate();
+            if (Auth::user()->hasRole('admin')) {
+                return redirect()->intended('/admin/dashboard')->with('success', 'Login berhasil!');
+            } else {
+                return redirect()->intended('/dashboard')->with('success', 'Login berhasil!');
+            }
+        return back()->withErrors([
+            'email' => 'Email atau password yang dimasukkan salah.',
+        ]);
         }
-
-        if (!Hash::check($request->password, $user->password)) {
-            return redirect()->back()->withErrors([
-                    'password' => 'Password yang dimasukkan salah.',
-                ]);
-        }
-        
-        Auth::login($user);
-        return redirect()->route('dashboard')->with('success', 'Login berhasil!');
     }
 
     /**
@@ -80,9 +97,13 @@ class AuthController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function logout()
+    public function logout(Request $request)
     {
-        User::logout();
-        return redirect()->route('login')->with('info', 'Anda telah logout.');
+        // User::logout();
+        // return redirect()->route('login')->with('info', 'Anda telah logout.');
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/auth')->with('info', 'Anda telah logout.');
     }
 }
