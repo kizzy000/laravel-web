@@ -11,7 +11,7 @@
                             </svg>
                         </a>
                     </li>
-                    <li class="breadcrumb-item"><a href="#">User</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('user.index') }}">User</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Tambah User</li>
                 </ol>
             </nav>
@@ -68,6 +68,22 @@
                                     <div class="mb-3">
                                         <label for="password_confirmation" class="form-label">Confirm Password</label>
                                         <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" required>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label>Pilih Role</label>
+                                        <select name="role" class="form-control" required>
+                                            <option value="">-- Pilih --</option>
+                                            @foreach ($roles as $role)
+                                                <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
+                                    <!-- Input Foto -->
+                                    <div class="mb-3">
+                                        <label>Foto Profil</label>
+                                        <input type="file" name="avatar" class="form-control">
                                     </div>
 
                                     <!-- Buttons -->

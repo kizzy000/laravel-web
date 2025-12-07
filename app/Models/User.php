@@ -10,7 +10,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
+    /**@use HasFactory<\Database\Factories\UserFactory>*/
     use HasFactory, Notifiable, HasRoles;
 
     /**
@@ -18,12 +18,13 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    protected $table        = 'users';
-    protected $primaryKey   = 'id';
+    // protected $table        = 'users';
+    // protected $primaryKey   = 'id';
     protected $fillable = [
         'name',
         'email',
         'password',
+        'avatar',
     ];
 
     /**

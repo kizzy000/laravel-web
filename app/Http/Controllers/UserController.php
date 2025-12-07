@@ -15,8 +15,6 @@ class UserController extends Controller
      */
     public function index()
     {
-        // $data['user'] = User::all();
-        // return view('admin.user.index', $data);
         $data['dataUser'] = User::all();
         return view('admin.user.index', $data);
     }
@@ -28,7 +26,6 @@ class UserController extends Controller
     {
         $data['roles'] = Role::all();
         return view('admin.user.create', $data);
-        // return view('admin.user.create');
     }
 
     /**
@@ -36,29 +33,6 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // $data['name']     = $request->name;
-        // $data['email']      = $request->email;
-        // // $data['password']      = $request->password;
-        // $data['password'] = Hash::make($request->password);
-
-        // User::create($data);
-
-        // return redirect()->route('user.index')->with('success', 'Penambahan Data Berhasil!');
-
-        // $request->validate([
-        //     'name'     => 'required|string|max:100',
-        //     'email'    => 'required|email|unique:users,email',
-        //     'password' => 'required|min:8|confirmed'
-        // ]);
-
-        // $data['name']     = $request->name;
-        // $data['email']    = $request->email;
-        // $data['password'] = Hash::make($request->password);
-
-        // User::create($data);
-
-        // return redirect()->route('user.index')->with('success', 'Penambahan Data Berhasil!');
-
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users',
@@ -111,32 +85,6 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // $user_id = $id;
-        // $user    = User::findOrFail($user_id);
-
-        // // $user->name     = $request->name;
-        // // $user->email    = $request->email;
-        // // $user->password = $request->password;
-
-        // // $user->save();
-        // // return redirect()->route('user.index')->with('success', 'Perubahan Data Berhasil !');
-
-        // $request->validate([
-        //     'name'     => 'required|string|max:100',
-        //     'email'    => 'required|email|unique:users,email,' . $id,
-        //     'password' => 'nullable|min:8|confirmed',
-        // ]);
-
-        // $user->name  = $request->name;
-        // $user->email = $request->email;
-
-        // if ($request->filled('password')) {
-        //     $user->password = Hash::make($request->password);
-        // }
-
-        // $user->save();
-
-        // return redirect()->route('user.index')->with('success', 'Perubahan Data Berhasil!');
         $user = User::findOrFail($id);
 
         // Validasi input
@@ -182,10 +130,6 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        // $user = User::findOrFail($id);
-
-        // $user->delete();
-        // return redirect()->route('user.index')->with('success', 'Data Berhasil Di Hapus!');
 
         $user = User::findOrFail($id);
 
